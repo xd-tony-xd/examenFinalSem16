@@ -1,0 +1,35 @@
+<style>
+.home-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+</style>
+
+<div class="top-bar">
+  <div class="logo">Simple Pimpan</div>
+  <a routerLink="/login" class="btn-login">Iniciar Sesión</a>
+</div>
+
+<div class="home-container">
+  <h1>Bienvenido a nuestra tienda <br> STREAMING</h1>
+
+  <div class="nav-categorias">
+    <button (click)="seleccionarCategoria(null)" [class.activo]="!categoriaSeleccionada">Todos</button>
+    <button *ngFor="let cat of categorias"
+            (click)="seleccionarCategoria(cat.id)"
+            [class.activo]="categoriaSeleccionada === cat.id">
+      {{ cat.nombre }}
+    </button>
+  </div>
+
+  <div class="productos-grid">
+    <div class="producto-card" *ngFor="let producto of productosFiltrados">
+      <img [src]="producto.urlImagen || 'https://via.placeholder.com/150'" alt="{{ producto.nombre }}">
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.descripcion }}</p>
+      <p><strong>${{ producto.precio }}</strong></p>
+      <button (click)="comprar(producto)">Comprar</button>
+    </div>
+  </div>
+</div>

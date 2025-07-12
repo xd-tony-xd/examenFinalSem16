@@ -1,0 +1,21 @@
+<div class="admin-container">
+  <header class="admin-header">
+    <div class="user-info">
+      <h2>Panel de Administración</h2>
+      <p>Bienvenido: <strong>{{ nombreAdmin }}</strong></p>
+      <p>Sesión iniciada: {{ fechaAcceso }}</p>
+    </div>
+    <button (click)="cerrarSesion()" class="logout-btn">Cerrar sesión</button>
+  </header>
+
+  <nav class="admin-menu">
+    <a routerLink="/productos" routerLinkActive="active">Productos</a>
+    <a routerLink="/categorias" routerLinkActive="active">Categorías</a>
+    <a routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+    <a routerLink="/ordenes" routerLinkActive="active">Órdenes</a>
+  </nav>
+
+  <main class="admin-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

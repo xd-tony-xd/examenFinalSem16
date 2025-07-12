@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Lista de Productos</h2>
+  <a routerLink="nuevo" class="btn btn-new">Nuevo Producto</a>
+  
+  <div *ngIf="loading" class="loading-indicator">
+    Cargando productos...
+  </div>
+  
+  <table *ngIf="!loading" class="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Categoría</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.id }}</td>
+        <td>
+          <img *ngIf="producto.urlImagen" [src]="producto.urlImagen" alt="Imagen" width="50" height="50">
+          <span *ngIf="!producto.urlImagen">Sin imagen</span>
+        </td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion || '-' }}</td>
+        <td>{{ formatearMoneda(producto.precio) }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>{{ obtenerNombreCategoria(producto.categoriaId) }}</td>
+        <td>
+          <span [class.active]="producto.estaActivo" class="status-badge">
+            {{ producto.estaActivo ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+        <td class="actions">
+          <a [routerLink]="['editar', producto.id]" class="btn btn-edit">Editar</a>
+          <button (click)="eliminarProducto(producto.id)" class="btn btn-delete">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,128 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+}
+
+.register-container {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 30px 25px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in-out;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 28px;
+    color: #2c3e50;
+    font-size: 1.8rem;
+  }
+
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 1rem;
+
+      &:focus {
+        border-color: #66afe9;
+        box-shadow: 0 0 6px rgba(102, 175, 233, 0.5);
+        outline: none;
+      }
+
+      &.is-invalid {
+        border-color: #e74c3c;
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+
+    button {
+      padding: 12px;
+      background-color: #007bff;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover:not(:disabled) {
+        background-color: #0056b3;
+      }
+
+      &:disabled {
+        background-color: #aacfff;
+        cursor: not-allowed;
+      }
+    }
+
+    .login-link {
+      text-align: center;
+      text-decoration: none;
+      color: #007bff;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+
+      &:hover {
+        text-decoration: underline;
+        color: #0056b3;
+      }
+    }
+  }
+
+  .alert {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    text-align: center;
+
+    &.alert-danger {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    &.alert-success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

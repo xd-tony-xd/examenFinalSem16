@@ -1,0 +1,27 @@
+<div class="top-bar">
+  <div class="logo">Panel de Usuario</div>
+  <button class="btn-logout" (click)="cerrarSesion()">Salir</button>
+</div>
+
+<div class="home-container">
+  <h1>Bienvenido a la tienda</h1>
+
+  <div class="nav-categorias">
+    <button (click)="seleccionarCategoria(null)" [class.activo]="!categoriaSeleccionada">Todos</button>
+    <button *ngFor="let cat of categorias"
+            (click)="seleccionarCategoria(cat.id)"
+            [class.activo]="categoriaSeleccionada === cat.id">
+      {{ cat.nombre }}
+    </button>
+  </div>
+
+  <div class="productos-grid">
+    <div class="producto-card" *ngFor="let producto of productosFiltrados">
+      <img [src]="producto.urlImagen || 'https://via.placeholder.com/150'" alt="{{ producto.nombre }}">
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.descripcion }}</p>
+      <p><strong>S/ {{ producto.precio }}</strong></p>
+      <button (click)="comprar(producto)">Llamar / WhatsApp</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="register-container">
+  <h2>Registro de Usuario</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    <!-- Mensajes -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <!-- Nombre de Usuario -->
+    <div class="form-group">
+      <label>Nombre de Usuario *</label>
+      <input type="text" formControlName="username"
+        [class.is-invalid]="f['username'].touched && f['username'].invalid" />
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label>Correo Electrónico *</label>
+      <input type="email" formControlName="email"
+        [class.is-invalid]="f['email'].touched && f['email'].invalid" />
+    </div>
+
+    <!-- Contraseña -->
+    <div class="form-group">
+      <label>Contraseña *</label>
+      <input type="password" formControlName="password"
+        [class.is-invalid]="f['password'].touched && f['password'].invalid" />
+    </div>
+
+    <!-- Confirmar Contraseña -->
+    <div class="form-group">
+      <label>Confirmar Contraseña *</label>
+      <input type="password" formControlName="confirmPassword"
+        [class.is-invalid]="f['confirmPassword'].touched && f['confirmPassword'].invalid" />
+    </div>
+
+    <!-- Nombre Completo -->
+    <div class="form-group">
+      <label>Nombre Completo *</label>
+      <input type="text" formControlName="nombreCompleto"
+        [class.is-invalid]="f['nombreCompleto'].touched && f['nombreCompleto'].invalid" />
+    </div>
+
+    <!-- Teléfono -->
+    <div class="form-group">
+      <label>Teléfono *</label>
+      <input type="tel" formControlName="telefono"
+        [class.is-invalid]="f['telefono'].touched && f['telefono'].invalid" />
+    </div>
+
+    <!-- Botón de registro -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="registerForm.invalid || loading">
+        <span *ngIf="!loading">Registrarse</span>
+        <span *ngIf="loading">Registrando...</span>
+      </button>
+      <a routerLink="/login" class="login-link">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+  </form>
+</div>
